@@ -1,0 +1,33 @@
+# Ignore virtual environment
+venv/
+.env/
+
+# Ignore data files (optional: raw and intermediate files)
+data/raw/
+data/processed/
+
+# Ignore Jupyter notebook checkpoints
+**/.ipynb_checkpoints/
+
+# Ignore Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ignore model artifacts (if saved locally)
+models/
+*.h5
+*.pkl
+*.joblib
+
+# Ignore logs and reports (optional)
+*.log
+*.csv
+*.tsv
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore MLflow or experiment tracking folders (if used locally)
+mlruns/
