@@ -1,13 +1,13 @@
 from fastapi import FastAPI
-from src.api.pydantic_models import CustomerData
-from joblib import load
-import pandas as pd
+from src.api.pydantic_models import RiskRequest
+import joblib
+import numpy as np
 
 app = FastAPI()
-model = load("model.joblib")
+model = joblib.load("models/credit_model.pkl")
 
 @app.post("/predict")
-def predict(data: CustomerData):
-    df = pd.DataFrame([data.dict()])
-    prob = model.predict_proba(df)[:, 1][0]
-    return {"risk_probability": prob}
+def predict_risk(data: RiskRequest):
+    input_data = np.array([list(data.dict().values())])
+    prediction = model.predict_proba(input_data)[0][1]
+    return {"risk_probability": prediction}
